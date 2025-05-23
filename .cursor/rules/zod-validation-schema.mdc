@@ -1,0 +1,34 @@
+---
+description: Use this rule whenever you create, edit, or import validation schemas or types related to form, API, or domain data validation—especially in Server Actions. This ensures all Zod schemas and their inferred types are consistently defined, colocated, and exported from the correct location in the codebase.
+globs: 
+alwaysApply: false
+---
+> **When to refer to this rule:**
+> Use this rule whenever you create, edit, or import validation schemas or types related to form, API, or domain data validation—especially in Server Actions. This ensures all Zod schemas and their inferred types are consistently defined, colocated, and exported from the correct location in the codebase.
+
+# Zod Schema & Type Convention in lib/schemas
+
+All validation schemas and their inferred types must be defined in the [src/lib/schemas](mdc:src/lib/schemas) directory.
+
+- Each domain (e.g., auth, user) should have its own file (e.g., [auth.ts](mdc:src/lib/schemas/auth.ts)).
+- In each file, define the Zod schema and export the inferred type using `z.infer<typeof schema>`.
+- Do not separate types into a different file; colocate schema and type for maintainability and type safety.
+- @index.ts must re-export all schemas and types for easy import elsewhere in the codebase.
+
+**Example:**
+```ts
+// src/lib/schemas/auth.ts
+import { z } from "zod";
+
+export const signInSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+});
+export type SignInInput = z.infer<typeof signInSchema>;
+```
+
+```ts
+// src/lib/schemas/index.ts
+export * from "./auth";
+```
+

@@ -1,15 +1,23 @@
 // Signup, Email magic link confirmatiom route for Supabase
-import { type EmailOtpType } from "@supabase/supabase-js";
+// next
 import { type NextRequest, NextResponse } from "next/server";
-
-import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+// supabase
+import { type EmailOtpType } from "@supabase/supabase-js";
+// utils
+import { createClient } from "@/utils/supabase/server";
+// constants
+import {
+  appDefaultUrl,
+  emailVerificationErrorMessage,
+  loginUrl,
+} from "../../constant";
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
-  const next = searchParams.get("next") ?? "/";
+  const next = searchParams.get("next") ?? appDefaultUrl;
 
   if (token_hash && type) {
     const supabase = createClient();
@@ -35,8 +43,6 @@ export async function GET(request: NextRequest) {
 
   // redirect the user to an error page with some instructions
   redirect(
-    `/login?message=${encodeURIComponent(
-      "Email verification failed. Please try again."
-    )}`
+    `${loginUrl}?message=${encodeURIComponent(emailVerificationErrorMessage)}`,
   );
 }

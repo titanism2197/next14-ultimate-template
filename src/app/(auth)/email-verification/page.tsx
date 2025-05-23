@@ -1,9 +1,13 @@
 // route : /auth/email-verification
-// This page appears when a user sign up with email and password and needs to verify their email address.
+// This page appears when a user sign up with email and password then needs to verify their email address.
 
-import { createClient } from "@/utils/supabase/server";
+// next
 import Image from "next/image";
 import { redirect } from "next/navigation";
+// utils
+import { createClient } from "@/utils/supabase/server";
+// constants
+import { appDefaultUrl, emailVerificationErrorMessage } from "../constant";
 
 export default async function EmailVerification() {
   const supabase = createClient();
@@ -14,7 +18,7 @@ export default async function EmailVerification() {
 
   if (user) {
     // If the user is already logged in, redirect to the home page
-    return redirect("/");
+    return redirect(appDefaultUrl);
   }
 
   return (

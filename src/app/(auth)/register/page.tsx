@@ -1,18 +1,24 @@
+// next
 import { cookies } from "next/headers";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+// utils
+import { createClient } from "@/utils/supabase/server";
+// actions
 import {
   signInWithEmailPassword,
   // signInWithMagicLink,
   signUp,
 } from "../actions";
-import Link from "next/link";
+// components
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
 import { OAuthButtons } from "../oauth-signin";
+// constants
+import { appDefaultUrl, registerErrorMessage } from "../constant";
 
 export default async function login({
   searchParams,
@@ -29,7 +35,7 @@ export default async function login({
   } = await supabase.auth.getUser();
 
   if (user) {
-    return redirect("/");
+    return redirect(appDefaultUrl);
   }
 
   return (
@@ -39,6 +45,11 @@ export default async function login({
           <CardTitle className="text-2xl">로그인</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
+          {searchParams?.message && (
+            <div className="text-destructive text-center text-sm mb-2">
+              {searchParams.message || registerErrorMessage}
+            </div>
+          )}
           <OAuthButtons lastSignedInMethod={lastSignedInMethod} />
           <Separator className="my-2" />
           <form id="login-form" className="grid gap-4">

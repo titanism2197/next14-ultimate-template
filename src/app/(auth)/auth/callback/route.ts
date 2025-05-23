@@ -1,18 +1,27 @@
 // OAuth login callback route for Supabase
+// next
 import { NextResponse } from "next/server";
-// The client you created from the Server-Side Auth instructions
+// utils
 import { createClient } from "@/utils/supabase/server";
+// constants
+import {
+  appDefaultUrl,
+  loginErrorMessage,
+  loginUrl,
+  onBoardingUrl,
+} from "../../constant";
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
+
   // if "next" is in param, use it as the redirect URL
-  let next = searchParams.get("next") ?? "/";
+  let next = searchParams.get("next") ?? appDefaultUrl;
 
   if (code) {
     const supabase = createClient();
-    const { data: sessionData, error: sessionError } =
-      await supabase.auth.exchangeCodeForSession(code);
+    const { data: sessionData, error: sessionError } = await supabase.auth
+      .exchangeCodeForSession(code);
 
     if (!sessionError) {
       // if the user doesn't have profile data yet, send them to the onboarding page
@@ -22,8 +31,8 @@ export async function GET(request: Request) {
         .eq("user_id", sessionData.user.id);
 
       if (profiles?.length === 0) {
-        next = "/onboarding/profile";
-        const {  } = await supabase
+        next = onBoardingUrl;
+        const {} = await supabase
           .from("profiles")
           .insert([
             {
@@ -51,8 +60,6 @@ export async function GET(request: Request) {
 
   // return the user to an error page with instructions
   return NextResponse.redirect(
-    `${origin}/login?message=${encodeURIComponent(
-      "Login failed. Please try again."
-    )}`
+    `${origin}${loginUrl}?message=${encodeURIComponent(loginErrorMessage)}`,
   );
 }
