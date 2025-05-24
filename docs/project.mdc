@@ -1,0 +1,146 @@
+# \[Project Name]
+
+## Project Overview
+
+\[Describe the purpose and scope of this project. What is the main objective? Who are the target users? Why does it matter?]
+
+---
+
+### Vision
+
+\[Describe the long-term vision or mission of the project. What future do you want to create or enable?]
+
+---
+
+### Problem Statement
+
+* \[Describe the main problems, challenges, or gaps this project addresses]
+* \[List relevant pain points]
+* \[Explain why solving these problems is important]
+
+---
+
+## System Architecture (If Applicable)
+
+> *Include as much or as little technical breakdown as needed. Use diagrams or lists as appropriate. Remove any section not relevant for your project.*
+
+### 1. Frontend / User Interface
+
+```
+┌──────────────────────────────┐
+│  [UI Component/Module]       │
+├──────────────────────────────┤
+│ • [Feature/Function]         │
+│ • [Feature/Function]         │
+└──────────────────────────────┘
+```
+
+### 2. Backend / API
+
+```
+┌──────────────────────────────┐
+│  [Backend Service/Module]    │
+├──────────────────────────────┤
+│ • [Feature/Function]         │
+│ • [Feature/Function]         │
+└──────────────────────────────┘
+```
+
+### 3. Integrations / External Services
+
+* \[Service or Integration 1]
+* \[Service or Integration 2]
+* \[Etc.]
+
+---
+
+## Core Features
+
+\[List the key features of the project. Separate into "Core" and "Planned" if needed.]
+
+1. \[Feature #1: Description]
+2. \[Feature #2: Description]
+3. \[Feature #3: Description]
+4. \[Optional: more as needed]
+
+---
+
+## Technical Stack
+
+* \[Frontend: Framework/Tech/Library]
+* \[Backend: Framework/Tech/Language]
+* \[Database/Storage: Name/Type]
+* \[Infrastructure: Cloud/Local/Hybrid/etc.]
+* \[CI/CD: Tooling]
+* \[Other: Monitoring, Analytics, etc.]
+
+---
+
+## Development Roadmap
+
+> *Outline both the **short-term** (next steps, first milestones) and **long-term** (future goals, stretch features) in a timeline or phases. Try to keep high-level, not just MVP.*
+
+### Milestones
+
+#### Phase 1: Initial Foundation
+
+* \[Goal or milestone #1]
+* \[Goal or milestone #2]
+
+#### Phase 2: Feature Expansion
+
+* \[Goal or milestone #1]
+* \[Goal or milestone #2]
+
+#### Phase 3: Scaling & Ecosystem
+
+* \[Goal or milestone #1]
+* \[Goal or milestone #2]
+
+#### Long-Term Goals
+
+* \[Big vision features, large integrations, or expansion plans]
+* \[AI agent integrations, new markets, automation, etc.]
+* \[Community/Marketplace, Enterprise, etc.]
+
+---
+
+## Success Criteria
+
+* \[What must be true for this project to be considered successful?]
+* \[How will progress and impact be measured?]
+* \[Include metrics, qualitative goals, user feedback, etc.]
+
+---
+
+## Documentation & Communication
+
+* \[Where docs will live: repo, wiki, etc.]
+* \[How contributors and AI agents should communicate]
+* \[Standards for PRs, issues, etc.]
+* \[Conventions for naming, branching, etc.]
+
+---
+
+## Contribution Guidelines
+
+* \[How to onboard a new contributor or agent]
+* \[Code style, review process]
+* \[Issue/reporting standards]
+* \[How to propose new features or roadmap changes]
+
+---
+
+## Future Expansion & Ideas
+
+* \[Brainstorm or wishlist features]
+* \[New use cases, integrations, or markets]
+* \[Moonshot/visionary ideas]
+
+---
+
+### How To Use
+
+* Copy and adapt this for any new project.
+* Fill in/remove sections as needed.
+* This template is for **roadmapping, technical direction, and team/agent communication**—update as the project evolves.
